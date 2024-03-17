@@ -28,6 +28,7 @@
     let shortBreakDuration = $pomodoroConfig.shortBreakDuration;
     let longBreakDuration = $pomodoroConfig.longBreakDuration;
     let intervals = $pomodoroConfig.intervals;
+
     let pomodorosCompleted = 0;
 
     $: displayTime = formatTime(remainingTime); //string
@@ -37,7 +38,7 @@
        if (running) {
             startTimer(remainingTime, running);
        } else {
-            stopTimer()
+            stopTimer();
        }
     }
 
@@ -45,11 +46,12 @@
     function startTimer() {
         countDownInterval = setInterval(function() {
             remainingTime -= 1;
+            console.log(`remaining time testing with custom intervals: ${remainingTime}`);
+            // problem the mode isn't changing now
             if (remainingTime <= 0) {
-                stopTimer;
+                stopTimer();
                 switch(timer.mode) {
                     case 'pomodoro' :
-                        
                         pomodorosCompleted += 1;
                         console.log(`pc: ${pomodorosCompleted}`);
                         if (pomodorosCompleted % intervals == 0) {
@@ -65,7 +67,10 @@
                         timer.mode= 'pomodoro'
                         remainingTime = timer.pomodoro;
                 }
+                displayTime = formatTime(remainingTime);
                 startTimer();
+            } else {
+                displayTime = formatTime(remainingTime);
             }
         }, 1000);
     }
@@ -81,7 +86,7 @@
         <div class="time-group">
             <span class="capitalize-first">{timer.mode}</span>
             <h1>{displayTime}</h1>
-            <p>{pomodorosCompleted + 1}</p>
+            <p> Interval Number : {pomodorosCompleted + 1}</p>
             <button on:click={handleClick} on:click={() => first = false}>
                 {#if first}
                     Start

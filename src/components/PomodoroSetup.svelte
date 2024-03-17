@@ -14,7 +14,7 @@
                     <input bind:value={$pomodoroConfig.pomodoro} type="range" min="0" max="120" step="1" class="pd length"> <!--Can put the up and down increment buttons here if I want-->            
                 </div>    
                 <div class="form_item int">
-                    <p><span>{$pomodoroConfig.intervals}</span> minutes</p>
+                    <p><span>{$pomodoroConfig.intervals}</span></p>
                     <label for="pd-countInSet"> Number of Pomodoro intervals</label>
                     <input bind:value={$pomodoroConfig.intervals} type="range" min="0" max="120" step="1" class="pd pd-countInSet"> <!-- # of Pomodoro -->
                 </div>
