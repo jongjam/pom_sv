@@ -37,14 +37,13 @@
     }; //hh mm ss
     
     //every however long intervals switch the things by a certain number of degrees
-
     onMount(async () => {
         try {
             const responses = await Promise.all(worldTimeAPIUrls.map(url => fetch(url)));
             const data = await Promise.all(responses.map(response => response.json()));
             let i = 0;
-            for (let key in worldTimes) {
-                worldTimes[key] = timeUtils.getWorldTime(data[i])
+            for (let location in worldTimes) {
+                worldTimes[location] = timeUtils.getWorldTime(data[i])
                 i++;
             }
         } catch (error) {

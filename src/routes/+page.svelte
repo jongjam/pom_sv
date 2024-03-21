@@ -1,6 +1,5 @@
 <script>
     import { goto } from '$app/navigation';
-    import AnalogClock from '../components/AnalogClock.svelte';
     import Time from '/home/delicious_yangpa/workspace/sk_clock/src/components/Time.svelte'
     import PomodoroSetup from '../components/PomodoroSetup.svelte' // even if it is not used I want to indicate that it is part of our project here
     import TimeIncrementer from '../components/TimeIncrementer.svelte';
